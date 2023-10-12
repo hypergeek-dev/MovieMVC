@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using MovieMVC.Areas.Identity.Data;
 using MovieMVC.Data;
 
-namespace MovieMVC { 
-    public class Program {
+namespace MovieMVC
+{
+    public class Program
+    {
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

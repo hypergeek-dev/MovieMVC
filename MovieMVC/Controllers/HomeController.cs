@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieMVC.Data;
 using MovieMVC.Models;
-using SQLitePCL;
 using System.Diagnostics;
 
 namespace MovieMVC.Controllers
@@ -26,7 +25,7 @@ namespace MovieMVC.Controllers
         public IActionResult Index(string search)
         {
             List<Post> posts = GetAllPosts();
-            if(!String.IsNullOrEmpty(search))
+            if (!String.IsNullOrEmpty(search))
             {
                 var filteredPosts = string.IsNullOrWhiteSpace(search) ? posts : posts.Where(p => p.Title.Contains(search, StringComparison.OrdinalIgnoreCase));
             }
@@ -36,7 +35,7 @@ namespace MovieMVC.Controllers
 
             return View(posts);
         }
-        
+
 
 
         public IActionResult Privacy()

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using MovieMVC.Models;
 
 namespace MovieMVC.Areas.Identity.Data;
@@ -11,7 +7,7 @@ namespace MovieMVC.Areas.Identity.Data;
 public class MovieMVCUser : IdentityUser
 {
     public string Alias { get; set; }  //I added this line to be able to have an alias on userprofile. 
-    public List<Post>Posts { get; set; }
+    public List<Post> Posts { get; set; }
 
 }
 

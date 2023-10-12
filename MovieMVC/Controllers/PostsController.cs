@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using MovieMVC.Areas.Identity.Data;
 using MovieMVC.Data;
 using MovieMVC.Models;
+using System.Security.Claims;
 
 namespace MovieMVC.Controllers
 {
@@ -19,7 +16,7 @@ namespace MovieMVC.Controllers
         private readonly UserManager<MovieMVCUser> _userManager;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public PostsController(MovieMVCContext context, UserManager<MovieMVCUser>userManager, IWebHostEnvironment webHostEnvironment)
+        public PostsController(MovieMVCContext context, UserManager<MovieMVCUser> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _userManager = userManager;
@@ -27,6 +24,7 @@ namespace MovieMVC.Controllers
         }
 
         // GET: Posts
+        [Authorize(Roles = "Admin,Manager,Member")]  // Only users with these roles can access
         public async Task<IActionResult> Index()
         {
             var movieMVCContext = _context.Posts.Include(p => p.CategoryName).Include(p => p.User);
@@ -34,6 +32,7 @@ namespace MovieMVC.Controllers
         }
 
         // GET: Posts/Details/5
+        [Authorize(Roles = "Admin,Manager,Member")]  // Only users with these roles can access
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Posts == null)
@@ -54,6 +53,7 @@ namespace MovieMVC.Controllers
         }
 
         // GET: Posts/Create
+        [Authorize(Roles = "Admin,Manager")]  // Only Admin and Manager can create posts
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName");
@@ -66,7 +66,8 @@ namespace MovieMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Status,CreatedAt,ReleaseDate,ImagePost,CategoryId,UserId")] Post post, IFormFile file) 
+        [Authorize(Roles = "Admin,Manager")]  // Only Admin and Manager can create posts
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Status,CreatedAt,ReleaseDate,ImagePost,CategoryId,UserId")] Post post, IFormFile file)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -74,24 +75,24 @@ namespace MovieMVC.Controllers
                 var user = await _userManager.FindByIdAsync(userId);
                 post.User = user;
 
-               
-                    if (file != null && file.Length > 0)
-                    {
-                        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                        var Uimage = Path.Combine(_webHostEnvironment.WebRootPath, "img");
-                        post.ImagePost = @"\img\" + fileName;
 
-                        using (var fileStream = new FileStream(Path.Combine(Uimage, fileName), FileMode.Create))
-                        {
-                            await file.CopyToAsync(fileStream);
-                        }
+                if (file != null && file.Length > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    var Uimage = Path.Combine(_webHostEnvironment.WebRootPath, "img");
+                    post.ImagePost = @"\img\" + fileName;
+
+                    using (var fileStream = new FileStream(Path.Combine(Uimage, fileName), FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream);
                     }
-                    post.CreatedAt = DateTime.Now;
-                    _context.Add(post);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                
-                
+                }
+                post.CreatedAt = DateTime.Now;
+                _context.Add(post);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+
+
             }
             else
             {
@@ -103,7 +104,9 @@ namespace MovieMVC.Controllers
         }
 
         // GET: Posts/Edit/5
+        [Authorize(Roles = "Admin,Manager")]  // Only Admin and Manager can edit posts
         public async Task<IActionResult> Edit(int? id)
+
         {
             if (id == null || _context.Posts == null)
             {
@@ -125,6 +128,7 @@ namespace MovieMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Manager")]  // Only Admin and Manager can edit posts
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Status,CreatedAt,ReleaseDate,ImagePost,CategoryId,UserId")] Post post)
         {
             if (id != post.Id)
@@ -158,6 +162,7 @@ namespace MovieMVC.Controllers
         }
 
         // GET: Posts/Delete/5
+        [Authorize(Roles = "Admin")]  // Only Admin can delete posts
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Posts == null)
@@ -180,6 +185,7 @@ namespace MovieMVC.Controllers
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]  // Only Admin can delete posts
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Posts == null)
@@ -191,14 +197,14 @@ namespace MovieMVC.Controllers
             {
                 _context.Posts.Remove(post);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PostExists(int id)
         {
-          return (_context.Posts?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Posts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
