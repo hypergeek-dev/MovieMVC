@@ -69,18 +69,20 @@ namespace MovieMVC {
                 string email = "admin@admin.com";
                 string password = "1234";
 
-                if(await _userManager.FindByEmailAsync(email) == null)
+                if (await _userManager.FindByEmailAsync(email) == null)
                 {
-                    var user = new MovieMVCUser();
-                    user.UserName = email;
-                    user.Email = email;
+                    var user = new MovieMVCUser
+                    {
+                        UserName = email,
+                        Email = email,
+                        Alias = "Admin"  // Set the alias here
+                    };
                     await _userManager.CreateAsync(user, password);
                     await _userManager.AddToRoleAsync(user, "Admin");
-
                 }
 
-            } 
-                app.Run();
+            }
+            app.Run();
         }
     }
 }
