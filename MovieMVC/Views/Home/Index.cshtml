@@ -32,29 +32,29 @@
     }
 }
 
-<div class="text-center">
-    <h1 class="display-4">List Of Movies</h1>
-</div>
-<body>
-    <div class="container">
-        <div class="row">
-            
-            @foreach(var post in Model)
-            {
-                <div class="col-md-4">
-                <div class="card" style="width: 18rem; height:25rem">
+<div class="container">
+    <div class="row">
+        @foreach (var post in Model)
+        {
+            <!-- Each card takes up 4 columns -->
+            <div class="col-md-4 py-2">
+                <!-- Card starts -->
+                <div class="card mt-5">
+                    <!-- Card image -->
                     <img src="@Url.Content(post.ImagePost)" class="card-img-top" alt="" style="height:12rem;width:100%;">
+                    <!-- Card body -->
                     <div class="card-body">
                         <h5 class="card-title">@post.Title</h5>
-                            <p class="card-text">@post.Description<br>@GetCategoryName(post.CategoryId)</p>
-                            <h5 class="card-title">Release Date: @post.ReleaseDate</h5>
-                       
+                        <p class="card-text">@post.Description<br>@GetCategoryName(post.CategoryId)</p>
+                        <h5 class="card-title">Release Date: @post.ReleaseDate</h5>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-                </div>
-            }
-           
-        </div>
+                <!-- Card ends -->
+            </div>
+            <!-- Column ends -->
+        }
     </div>
-</body>
+    <!-- Row ends -->
+</div>
+<!-- Container ends -->
