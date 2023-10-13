@@ -46,15 +46,34 @@
             <!-- Second column will also take up half the screen -->
             <div class="col-md-6 d-flex flex-column">
                 <!-- First row "Search" -->
+                <!-- First row "Search" -->
                 <div class="d-flex flex-column align-items-center justify-content-center h-25 mb-5 mt-5">
                     <h2>Search</h2>
                     <div>
                         <form method="get">
+                            <!-- Text input for title search -->
                             <input type="text" value="" name="search" placeholder="Search Movies" />
+
+                            <!-- Dropdown for genre filter -->
+                            <select name="genre">
+                                <option value="">All Genres</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Action">Action</option>
+                                <option value="Family">Family</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Animation">Animation</option>
+                                <option value="Crime">Crime</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Historical">Historical</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Romance">Romance</option>
+                            </select>
+
                             <button type="submit">Search</button>
                         </form>
                     </div>
                 </div>
+
 
 
                 <!-- Second row with title "Add/edit" -->
@@ -67,9 +86,11 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
+                <!-- Movie Index
+
+                Put the list with Add, delete and edit functionality
+                -->
+               
 
             &copy; 2023 - MovieMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
