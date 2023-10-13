@@ -342,7 +342,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1520),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4313),
                             Description = "Two imprisoned men bond over a number of years.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
                             ReleaseDate = "1995-03-02",
@@ -353,7 +353,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 2,
                             CategoryId = 6,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1524),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4318),
                             Description = "The aging patriarch of an organized crime dynasty transfers control of his empire to his son.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
                             ReleaseDate = "1972-09-28",
@@ -364,7 +364,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 3,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1528),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4321),
                             Description = "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
                             ReleaseDate = "2008-07-24",
@@ -375,7 +375,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 4,
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1531),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4324),
                             Description = "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
                             ReleaseDate = "1994-09-22",
@@ -386,7 +386,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 5,
                             CategoryId = 7,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1533),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4327),
                             Description = "A thief who enters the dreams of others to steal secrets from their subconscious is given the inverse task of planting an idea into the mind of a CEO.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
                             ReleaseDate = "2010-07-16",
@@ -397,7 +397,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 6,
                             CategoryId = 6,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1536),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4330),
                             Description = "An insomniac office worker and a devil-may-care soap maker form an underground fight club.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
                             ReleaseDate = "1999-11-04",
@@ -408,7 +408,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 7,
                             CategoryId = 6,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1539),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4333),
                             Description = "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
                             ReleaseDate = "1994-12-01",
@@ -419,7 +419,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 8,
                             CategoryId = 8,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1542),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4335),
                             Description = "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
                             ReleaseDate = "1994-03-03",
@@ -430,7 +430,7 @@ namespace MovieMVC.Migrations
                         {
                             Id = 9,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1545),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4338),
                             Description = "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
                             ImagePost = "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
                             ReleaseDate = "1999-06-17",
@@ -441,9 +441,9 @@ namespace MovieMVC.Migrations
                         {
                             Id = 10,
                             CategoryId = 6,
-                            CreatedAt = new DateTime(2023, 10, 13, 3, 7, 34, 509, DateTimeKind.Local).AddTicks(1547),
+                            CreatedAt = new DateTime(2023, 10, 12, 23, 59, 42, 383, DateTimeKind.Local).AddTicks(4341),
                             Description = "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
-                            ImagePost = "https://adambergaoui.files.wordpress.com/2016/11/goodfellas.jpg?w=860",
+                            ImagePost = "https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V",
                             ReleaseDate = "1990-11-02",
                             Status = "Published",
                             Title = "Goodfellas"
