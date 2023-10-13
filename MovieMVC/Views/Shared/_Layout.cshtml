@@ -27,14 +27,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
-
                     <partial name="_LoginPartial" />
-                    </div>
+                </div>
             </div>
         </nav>
     </header>
 
-  
     <!-- Main Content -->
     <div class="container-fluid">
         <div class="row">
@@ -46,7 +44,6 @@
             <!-- Second column will also take up half the screen -->
             <div class="col-md-6 d-flex flex-column">
                 <!-- First row "Search" -->
-                <!-- First row "Search" -->
                 <div class="d-flex flex-column align-items-center justify-content-center h-25 mb-5 mt-5">
                     <h2>Search</h2>
                     <div>
@@ -55,8 +52,8 @@
                             <input type="text" value="" name="search" placeholder="Search Movies" />
 
                             <!-- Dropdown for genre filter -->
-                            <select name="genre">
-                                <option value="">All Genres</option>
+                            <select name="Category">
+                                <option value="">All Categories</option>
                                 <option value="Drama">Drama</option>
                                 <option value="Action">Action</option>
                                 <option value="Family">Family</option>
@@ -74,8 +71,6 @@
                     </div>
                 </div>
 
-
-
                 <!-- Second row with title "Add/edit" -->
                 <div class="d-flex flex-column align-items-center justify-content-center">
                     <h2>Add/Edit</h2>
@@ -85,16 +80,10 @@
                         <button type="button" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
+            </div> <!-- Closing tag for the second column -->
+        </div> <!-- Closing tag for the row -->
+    </div> <!-- Closing tag for the container-fluid -->
 
-                <!-- Movie Index
-
-                Put the list with Add, delete and edit functionality
-                -->
-               
-
-            &copy; 2023 - MovieMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

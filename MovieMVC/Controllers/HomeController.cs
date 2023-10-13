@@ -9,7 +9,7 @@ namespace MovieMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly MovieMVCContext _context;
-        private dynamic filteredPosts;
+        private dynamic? filteredPosts;
 
         public HomeController(ILogger<HomeController> logger, MovieMVCContext context)
         {
