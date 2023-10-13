@@ -27,8 +27,11 @@ namespace MovieMVC.Controllers
             List<Post> posts = GetAllPosts();
             if (!String.IsNullOrEmpty(search))
             {
-                var filteredPosts = string.IsNullOrWhiteSpace(search) ? posts : posts.Where(p => p.Title.Contains(search, StringComparison.OrdinalIgnoreCase));
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                filteredPosts = string.IsNullOrWhiteSpace(search) ? posts : posts.Where(p => p.Title.Contains(search, StringComparison.OrdinalIgnoreCase));
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             }
+
 
             ViewBag.FilteredPosts = filteredPosts;
             ViewBag.Search = search;

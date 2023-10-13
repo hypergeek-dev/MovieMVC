@@ -69,6 +69,9 @@ namespace MovieMVC.Controllers
         [Authorize(Roles = "Admin,Manager")]  // Only Admin and Manager can create posts
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Status,CreatedAt,ReleaseDate,ImagePost,CategoryId,UserId")] Post post, IFormFile file)
         {
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", post.CategoryId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", post.UserId);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (User.Identity.IsAuthenticated)
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -82,10 +85,9 @@ namespace MovieMVC.Controllers
                     var Uimage = Path.Combine(_webHostEnvironment.WebRootPath, "img");
                     post.ImagePost = @"\img\" + fileName;
 
-                    using (var fileStream = new FileStream(Path.Combine(Uimage, fileName), FileMode.Create))
-                    {
-                        await file.CopyToAsync(fileStream);
-                    }
+                    using var fileStream = new FileStream(Path.Combine(Uimage, fileName), FileMode.Create);
+                    await file.CopyToAsync(fileStream);
+
                 }
                 post.CreatedAt = DateTime.Now;
                 _context.Add(post);
@@ -98,9 +100,9 @@ namespace MovieMVC.Controllers
             {
                 return Redirect("/Identity/Account/Login");
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", post.CategoryId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", post.UserId);
-            return View(post);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
+
         }
 
         // GET: Posts/Edit/5
