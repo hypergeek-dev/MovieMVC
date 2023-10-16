@@ -47,7 +47,12 @@
                         <h5 class="card-title">@post.Title</h5>
                         <p class="card-text">@post.Description<br>@GetCategoryName(post.CategoryId)</p>
                         <h5 class="card-title">Release Date: @post.ReleaseDate</h5>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <a asp-area="" asp-controller="Posts" asp-action="Edit" asp-route-id="@post.Id" class="btn btn-warning">Edit</a>
+                            <a asp-area="" asp-controller="Posts" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-danger">Delete</a>
+                        }
                     </div>
                 </div>
                 <!-- Card ends -->
@@ -61,4 +66,3 @@
 <footer>
     &copy; 2023 - MovieMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 </footer>
-             

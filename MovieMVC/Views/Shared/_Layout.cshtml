@@ -46,13 +46,24 @@
                 <!-- First row "Search" -->
                 <div class="d-flex flex-column align-items-center justify-content-center h-25 mb-5 mt-5">
                     <h2>Search</h2>
-                    <div>
+                    <div class="form-group">
                         <form method="get">
                             <!-- Text input for title search -->
-                            <input type="text" value="" name="search" placeholder="Search Movies" />
+                            <input type="text" value="@ViewData["CurrentFilter"]" name="SearchString" placeholder="Search Movies" />
+                            <input type="submit" value="Search" class="btn btn-danger" />
+                        </form>
+                    </div>
 
+                    <!-- Button for Add -->
+                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                    {
+                        <div class="btn-group mt-2" role="group">
+                            <a asp-area="" asp-controller="Posts" asp-action="Add" class="btn btn-warning">Add</a>
+                        </div>
+                    }
+                </div>
                             <!-- Dropdown for genre filter -->
-                            <select name="Category">
+                           @*  <select name="Category">
                                 <option value="">All Categories</option>
                                 <option value="Drama">Drama</option>
                                 <option value="Action">Action</option>
@@ -64,21 +75,16 @@
                                 <option value="Historical">Historical</option>
                                 <option value="Horror">Horror</option>
                                 <option value="Romance">Romance</option>
-                            </select>
-
-                            <button type="submit">Search</button>
-                        </form>
+                            </select> *@   
+  
+                        </div>
                     </div>
                 </div>
 
                 <!-- Second row with title "Add/edit" -->
                 <div class="d-flex flex-column align-items-center justify-content-center">
-                    <h2>Add/Edit</h2>
-                    <div class="btn-group mt-2" role="group">
-                        <button type="button" class="btn btn-primary">Add</button>
-                        <button type="button" class="btn btn-warning">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </div>
+   
+
                 </div>
             </div> <!-- Closing tag for the second column -->
         </div> <!-- Closing tag for the row -->

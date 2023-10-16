@@ -30,6 +30,10 @@ namespace MovieMVC.Controllers
             var movieMVCContext = _context.Posts.Include(p => p.CategoryName).Include(p => p.User);
             return View(await movieMVCContext.ToListAsync());
         }
+        public IActionResult AccessDenied()
+        {
+            return View("Accesdenied");
+        }
 
         // GET: Posts/Details/5
         [Authorize(Roles = "Admin,Manager,Member")]  // Only users with these roles can access
@@ -53,20 +57,29 @@ namespace MovieMVC.Controllers
         }
 
         // GET: Posts/Create
-        [Authorize(Roles = "Admin,Manager")]  // Only Admin and Manager can create posts
+        [Authorize]
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
-            return View();
+            if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            {
+                ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName");
+                ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+                return View();
+            }
+            else
+            {
+                return AccessDenied();
+            }
         }
+
 
         // POST: Posts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin,Manager")]  // Only Admin and Manager can create posts
+        [Authorize]
+       [Authorize(Roles = "Admin,Manager,User")]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Status,CreatedAt,ReleaseDate,ImagePost,CategoryId,UserId")] Post post, IFormFile file)
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", post.CategoryId);
@@ -98,7 +111,8 @@ namespace MovieMVC.Controllers
             }
             else
             {
-                return Redirect("/Identity/Account/Login");
+                return AccessDenied();
+
             }
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 

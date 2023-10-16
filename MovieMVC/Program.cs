@@ -29,6 +29,9 @@ namespace MovieMVC
                 options.Password.RequiredLength = 4;
                 options.Password.RequiredUniqueChars = 0;
             });
+
+
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -77,7 +80,7 @@ namespace MovieMVC
                     {
                         UserName = email,
                         Email = email,
-                        Alias = "Admin"  // Set the alias here
+                      
                     };
                     await _userManager.CreateAsync(user, password);
                     await _userManager.AddToRoleAsync(user, "Admin");

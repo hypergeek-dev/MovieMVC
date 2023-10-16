@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieMVC.Data;
 using MovieMVC.Models;
 using System.Diagnostics;
@@ -22,25 +23,26 @@ namespace MovieMVC.Controllers
             List<Post> posts = _context.Posts.OrderByDescending(p => p.ReleaseDate).ToList();
             return posts;
         }
-        public IActionResult Index(string search)
+        //public IActionResult Index(string search)
+        //{
+        //    List<Post> posts = GetAllPosts();
+            
+        //    return View(posts);
+        //}
+        public async Task<ActionResult> Index(string SearchString)
         {
-            List<Post> posts = GetAllPosts();
-            if (!String.IsNullOrEmpty(search))
+
+            ViewData["CurrentFilter"] = SearchString;
+            var posts = from t in _context.Posts
+                        select t;
+            if (!string.IsNullOrEmpty(SearchString))
             {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-                filteredPosts = string.IsNullOrWhiteSpace(search) ? posts : posts.Where(p => p.Title.Contains(search, StringComparison.OrdinalIgnoreCase));
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                posts = posts.Where(p => p.Title.ToLower().Contains(SearchString.ToLower()));
             }
+            List<Post> postList = await posts.ToListAsync();
 
-
-            ViewBag.FilteredPosts = filteredPosts;
-            ViewBag.Search = search;
-
-            return View(posts);
+             return View(postList);
         }
-
-
-
         public IActionResult Privacy()
         {
             return View();
