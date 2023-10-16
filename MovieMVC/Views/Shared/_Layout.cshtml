@@ -58,7 +58,8 @@
                     @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                     {
                         <div class="btn-group mt-2" role="group">
-                            <a asp-area="" asp-controller="Posts" asp-action="Add" class="btn btn-warning">Add</a>
+                            <a asp-area="" asp-controller="Posts" asp-action="Create" class="btn btn-warning">Add</a>
+
                         </div>
                     }
                 </div>
